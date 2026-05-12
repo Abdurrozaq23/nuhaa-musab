@@ -1,0 +1,602 @@
+﻿<!DOCTYPE html>
+<html lang="id" data-theme="black">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Data Tamu Undangan - Nuhaa &amp; Mus'ab</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #EDEDED;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 80px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333333;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #444444;
+        }
+
+        .glass-panel {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .card-modern {
+            background: #09090B;
+            border: 1px solid #27272A;
+            border-radius: 12px;
+        }
+
+        .table-modern thead tr {
+            border-bottom: 1px solid #27272A;
+        }
+
+        .table-modern th {
+            font-weight: 500;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #A1A1AA;
+            background-color: #09090B;
+            padding: 1rem;
+        }
+
+        .table-modern td {
+            font-size: 0.875rem;
+            padding: 1rem;
+            color: #E4E4E7;
+            border-bottom: 1px solid #27272A;
+        }
+
+        .table-modern tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-modern tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .mobile-list-item {
+            border-bottom: 1px solid #27272A;
+            padding: 1rem;
+            background: #09090B;
+        }
+
+        .mobile-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .btn-modern {
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn-modern:active {
+            transform: scale(0.96);
+        }
+
+        .btn-primary-modern {
+            background-color: #EDEDED;
+            color: #000000;
+        }
+
+        .btn-secondary-modern {
+            background-color: #18181B;
+            border: 1px solid #3F3F46;
+            color: #E4E4E7;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .stat-card {
+            background: #09090B;
+            border: 1px solid #27272A;
+            padding: 0.75rem;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .input-dark {
+            background-color: #18181B;
+            border: 1px solid #3F3F46;
+            color: #EDEDED;
+        }
+
+        .input-dark:focus {
+            border-color: #A855F7;
+            outline: none;
+        }
+
+        .modal-box-dark {
+            background-color: #09090B;
+            border: 1px solid #27272A;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-slide-up {
+            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center">
+
+    <!-- Navbar / Header -->
+    <nav class="w-full glass-panel sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div>
+                    <h1 class="font-semibold text-gray-100 leading-tight hidden sm:block">Data Tamu Undangan Digital
+                    </h1>
+                    <h1 class="font-semibold text-gray-100 leading-tight sm:hidden">Data Tamu</h1>
+                    <p class="text-xs text-gray-500">Nuhaa &amp; Mus'ab</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="https://nuhaa-musab.vercel.app" target="_blank"
+                    class="btn btn-sm btn-ghost btn-modern font-normal text-gray-400 hover:text-white hidden sm:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    Undangan
+                </a>
+                <button type="button" id="btnTambahTamu"
+                    class="btn btn-sm sm:btn-md btn-primary-modern btn-modern gap-2 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span class="hidden sm:inline">Tambah Tamu</span>
+                    <span class="sm:hidden">Baru</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="w-full max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-8 flex-grow animate-slide-up">
+
+        <!-- Stats Section -->
+        <div class="mb-6">
+            <div class="sm:hidden stats-grid">
+                <div class="stat-card">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="stat-dot bg-zinc-600"></span>
+                        <span class="text-xs text-zinc-400">Total</span>
+                    </div>
+                    <span class="text-xl font-bold text-white" id="total-guests-m">0</span>
+                </div>
+                <div class="stat-card">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="stat-dot bg-emerald-500"></span>
+                        <span class="text-xs text-zinc-400">Hadir</span>
+                    </div>
+                    <span class="text-xl font-bold text-emerald-400" id="total-attending-m">0</span>
+                </div>
+                <div class="stat-card">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="stat-dot bg-rose-500"></span>
+                        <span class="text-xs text-zinc-400">Tidak</span>
+                    </div>
+                    <span class="text-xl font-bold text-rose-400" id="total-not-attending-m">0</span>
+                </div>
+                <div class="stat-card">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="stat-dot bg-amber-500"></span>
+                        <span class="text-xs text-zinc-400">Belum</span>
+                    </div>
+                    <span class="text-xl font-bold text-amber-400" id="total-pending-m">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="card-modern overflow-hidden shadow-lg">
+
+            <!-- Desktop Table View -->
+            <div class="hidden sm:block overflow-x-auto">
+                <table class="table table-modern w-full">
+                    <thead>
+                        <tr>
+                            <th class="w-12 text-center">No</th>
+                            <th class="w-12 text-center">Link</th>
+                            <th>Nama Tamu</th>
+                            <th>Ucapan</th>
+                            <th class="text-center">Kehadiran</th>
+                            <th>Tanggal</th>
+                            <th class="text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="desktop-table-body">
+                        <!-- Data loaded here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mobile List View -->
+            <div class="sm:hidden" id="mobile-list-body">
+                <!-- Data loaded here as cards -->
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading" class="text-center py-12">
+                <span class="loading loading-spinner loading-md text-zinc-600"></span>
+                <p class="mt-2 text-sm text-zinc-500">Memuat data...</p>
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="hidden text-center py-16">
+                <div
+                    class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-zinc-600" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-sm font-medium text-zinc-300">Belum ada tamu</h3>
+                <p class="text-sm text-zinc-500 mt-1">Mulai dengan menambahkan tamu baru.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Tambah Tamu -->
+    <dialog id="addGuestModal" class="modal backdrop-blur-sm modal-top sm:modal-middle">
+        <div class="modal-box modal-box-dark p-0 max-w-md shadow-2xl">
+            <div class="p-5 border-b border-zinc-800 flex justify-between items-center bg-zinc-900/50">
+                <h3 class="font-semibold text-lg text-zinc-100">Tambah Tamu</h3>
+                <form method="dialog">
+                    <button class="btn btn-sm btn-circle btn-ghost text-zinc-500 hover:text-zinc-100">✕</button>
+                </form>
+            </div>
+            <div class="p-6 space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-zinc-400 mb-1.5">Nama Tamu</label>
+                    <input type="text" id="guestName" placeholder="Contoh: Bapak Ahmad Saputra"
+                        class="input input-dark w-full rounded-lg text-sm" />
+                </div>
+                <div class="pt-2">
+                    <button type="button" id="btnSimpan" class="btn btn-primary-modern w-full gap-2">
+                        <span id="btnText">Simpan &amp; Buat Link</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- Modal Pesan Undangan -->
+    <dialog id="messageModal" class="modal backdrop-blur-sm modal-top sm:modal-middle">
+        <div class="modal-box modal-box-dark p-0 max-w-lg shadow-2xl">
+            <div class="p-5 border-b border-zinc-800 flex justify-between items-center bg-zinc-900/50">
+                <h3 class="font-semibold text-lg text-zinc-100">Pesan Undangan</h3>
+                <form method="dialog">
+                    <button class="btn btn-sm btn-circle btn-ghost text-zinc-500 hover:text-zinc-100">✕</button>
+                </form>
+            </div>
+
+            <div class="p-6">
+                <div class="bg-zinc-900/50  border border-zinc-800 p-4 mb-4 rounded-lg">
+                    <div id="pesanOutput"
+                        class="text-sm text-zinc-300 whitespace-pre-line font-mono max-h-60 overflow-y-auto leading-relaxed">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-3">
+                    <button type="button" id="btnKirimWA"
+                        class="btn w-full gap-2 text-white border-none hover:opacity-90 font-bold"
+                        style="background-color:#25D366;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                        </svg>
+                        Kirim via WhatsApp
+                    </button>
+                    <button type="button" id="btnSalinPesan" class="btn btn-secondary-modern w-full gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                        </svg>
+                        Salin Teks
+                    </button>
+                </div>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Supabase setup
+        const supabaseUrl = 'https://wuytjjaapipkffabvxsp.supabase.co';
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1eXRqamFhcGlwa2ZmYWJ2eHNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM0NjkyMjAsImV4cCI6MjA3OTA0NTIyMH0.HCu4c31C8gRjzMccmszrTBUJPlDnYxh9viq2NRibl4c';
+        const TABLE_NAME = 'nuhaa_musab';
+        const BASE_URL = 'https://nuhaa-musab.vercel.app';
+        const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+
+        let generatedPesan = '';
+
+        // Generate message template
+        function generateMessage(guestName) {
+            const encodedName = encodeURIComponent(guestName);
+            const link = `${BASE_URL}?to=${encodedName}`;
+
+            return `Kepada Yth,
+Bapak/Ibu/Saudara/i
+${guestName}
+
+بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ
+
+Dengan memohon rahmat dan ridho-Mu, Ya Allah, Kami bermaksud mengundang Bapak/Ibu/Saudara/i ke acara pernikahan putra dan putri kami.
+
+Berikut kami lampirkan link undangan acara pernikahan kedua mempelai:
+${link}
+
+Merupakan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan mendoakan restu untuk kedua mempelai.
+Atas kehadiran, perhatian dan doa Bapak/Ibu/Saudara/i, kami ucapkan terima kasih.
+
+Kami yang berbahagia
+Nuhaa & Mus'ab
+Beserta keluarga besar
+
+وَالسَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ`;
+        }
+
+        function showMessage(guestName) {
+            const pesan = generateMessage(guestName);
+            generatedPesan = pesan;
+            document.getElementById("pesanOutput").innerText = pesan;
+            document.getElementById('messageModal').showModal();
+        }
+
+        function formatDate(dateString) {
+            if (!dateString) return '-';
+            const date = new Date(dateString);
+            return new Intl.DateTimeFormat('id-ID', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            }).format(date);
+        }
+
+        async function displayComments() {
+            const loadingDiv = document.getElementById('loading');
+            const emptyState = document.getElementById('empty-state');
+            const desktopTableBody = document.getElementById('desktop-table-body');
+            const mobileListBody = document.getElementById('mobile-list-body');
+
+            loadingDiv.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+            desktopTableBody.innerHTML = '';
+            mobileListBody.innerHTML = '';
+
+            const { data, error } = await supabaseClient
+                .from(TABLE_NAME)
+                .select('*')
+                .order('id', { ascending: false });
+
+            loadingDiv.classList.add('hidden');
+
+            if (error) {
+                console.error('Error fetching data', error);
+                desktopTableBody.innerHTML = '<tr><td colspan="7" class="text-center text-rose-500 py-4">Gagal mengambil data.</td></tr>';
+                return;
+            }
+
+            if (!data || data.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            const totalGuests = data.length;
+            let countHadir = 0;
+            let countTidakHadir = 0;
+            let countPending = 0;
+
+            data.forEach(item => {
+                if (item.is_hadir) {
+                    countHadir++;
+                } else if (item.ucapan && item.ucapan.trim() !== '') {
+                    countTidakHadir++;
+                } else {
+                    countPending++;
+                }
+            });
+
+            document.getElementById('total-guests-m').textContent = totalGuests;
+            document.getElementById('total-attending-m').textContent = countHadir;
+            document.getElementById('total-not-attending-m').textContent = countTidakHadir;
+            document.getElementById('total-pending-m').textContent = countPending;
+
+            data.forEach((item, index) => {
+                const encodedName = encodeURIComponent(item.nama);
+                const invitationLink = `${BASE_URL}?to=${encodedName}`;
+                const dateFormatted = formatDate(item.created_at);
+
+                let statusClass, statusText;
+                if (item.is_hadir) {
+                    statusClass = "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
+                    statusText = "Hadir";
+                } else if (item.ucapan && item.ucapan.trim() !== '') {
+                    statusClass = "bg-rose-500/10 text-rose-400 border-rose-500/20";
+                    statusText = "Tidak Hadir";
+                } else {
+                    statusClass = "bg-zinc-800 text-zinc-400 border-zinc-700";
+                    statusText = "Belum";
+                }
+                const statusBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border ${statusClass}">${statusText}</span>`;
+
+                // Desktop Row
+                const row = document.createElement('tr');
+                row.className = 'group transition-colors';
+                row.innerHTML = `
+                    <td class="text-center text-zinc-600 font-mono text-xs">${index + 1}</td>
+                    <td class="text-center">
+                        <a href="${invitationLink}" target="_blank" class="btn btn-xs btn-circle btn-ghost text-zinc-500 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </td>
+                    <td><div class="font-medium text-zinc-200">${item.nama || '-'}</div></td>
+                    <td><div class="text-sm text-zinc-400 truncate max-w-xs">${item.ucapan || '-'}</div></td>
+                    <td class="text-center">${statusBadge}</td>
+                    <td class="text-sm text-zinc-500">${dateFormatted}</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-xs btn-secondary-modern btn-show-message" data-name="${(item.nama || '').replace(/"/g, '&quot;')}">Pesan</button>
+                    </td>
+                `;
+                desktopTableBody.appendChild(row);
+
+                // Mobile Card
+                const card = document.createElement('div');
+                card.className = 'mobile-list-item';
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h4 class="font-semibold text-zinc-100 text-base">${item.nama || '-'}</h4>
+                            <p class="text-xs text-zinc-500 mt-0.5">${dateFormatted}</p>
+                        </div>
+                        ${statusBadge}
+                    </div>
+                    ${item.ucapan ? `<p class="text-xs text-zinc-400 mb-3 bg-zinc-900/50 p-2 rounded border border-zinc-800/50 italic">"${item.ucapan}"</p>` : ''}
+                    <div class="flex gap-2 mt-2">
+                        <a href="${invitationLink}" target="_blank" class="btn btn-sm flex-1 btn-secondary-modern text-xs font-normal">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                            Link
+                        </a>
+                        <button type="button" class="btn btn-sm flex-1 btn-primary-modern text-xs font-normal btn-show-message" data-name="${(item.nama || '').replace(/"/g, '&quot;')}">
+                            Kirim Pesan
+                        </button>
+                    </div>
+                `;
+                mobileListBody.appendChild(card);
+            });
+
+            document.querySelectorAll('.btn-show-message').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const guestName = this.getAttribute('data-name');
+                    showMessage(guestName);
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            displayComments();
+
+            document.getElementById('btnTambahTamu').addEventListener('click', function () {
+                document.getElementById('guestName').value = '';
+                document.getElementById('addGuestModal').showModal();
+            });
+
+            document.getElementById('btnSimpan').addEventListener('click', async function () {
+                const guestName = document.getElementById("guestName").value.trim();
+                const saveBtn = this;
+                const btnText = document.getElementById("btnText");
+
+                if (!guestName) {
+                    alert("Mohon masukkan nama tamu.");
+                    return;
+                }
+
+                saveBtn.disabled = true;
+                btnText.classList.add('hidden');
+
+                try {
+                    const { data, error } = await supabaseClient
+                        .from(TABLE_NAME)
+                        .insert([{ nama: guestName, is_hadir: false }])
+                        .select();
+
+                    if (error) throw error;
+
+                    document.getElementById('addGuestModal').close();
+                    await displayComments();
+                    showMessage(guestName);
+
+                } catch (err) {
+                    console.error('Error:', err);
+                    alert(`Terjadi kesalahan: ${err.message}`);
+                } finally {
+                    saveBtn.disabled = false;
+                    btnText.classList.remove('hidden');
+                }
+            });
+
+            document.getElementById('btnSalinPesan').addEventListener('click', function () {
+                if (!generatedPesan) return;
+                navigator.clipboard.writeText(generatedPesan).then(() => {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = `<span class="text-emerald-400 font-bold">Tersalin!</span>`;
+                    setTimeout(() => { this.innerHTML = originalText; }, 2000);
+                }).catch(() => alert("Gagal menyalin pesan."));
+            });
+
+            document.getElementById('btnKirimWA').addEventListener('click', function () {
+                if (!generatedPesan) return;
+                const url = `https://wa.me/?text=${encodeURIComponent(generatedPesan)}`;
+                window.open(url, '_blank');
+            });
+        });
+    </script>
+</body>
+
+</html>
