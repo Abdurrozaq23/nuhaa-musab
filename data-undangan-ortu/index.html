@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Data Tamu Undangan - Nuhaa &amp; Mus'ab</title>
+    <title>Data Tamu Undangan (Orang Tua) - Nuhaa &amp; Mus'ab</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -172,9 +172,9 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div>
-                    <h1 class="font-semibold text-gray-100 leading-tight hidden sm:block">Data Tamu Undangan Digital
+                    <h1 class="font-semibold text-gray-100 leading-tight hidden sm:block">Data Tamu Undangan (Orang Tua)
                     </h1>
-                    <h1 class="font-semibold text-gray-100 leading-tight sm:hidden">Data Tamu</h1>
+                    <h1 class="font-semibold text-gray-100 leading-tight sm:hidden">Data Tamu (Ortu)</h1>
                     <p class="text-xs text-gray-500">Nuhaa &amp; Mus'ab</p>
                 </div>
             </div>
@@ -372,7 +372,7 @@
         // Generate message template
         function generateMessage(guestName) {
             const encodedName = encodeURIComponent(guestName);
-            const link = `${BASE_URL}?to=${encodedName}`;
+            const link = `${BASE_URL}?to=${encodedName}&from=ortu`;
 
             return `Kepada Yth,
 Bapak/Ibu/Saudara/i
@@ -381,17 +381,18 @@ ${guestName}
 بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
 السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ
 
-Dengan memohon rahmat dan ridho-Mu, Ya Allah, Kami bermaksud mengundang Bapak/Ibu/Saudara/i ke acara pernikahan putra dan putri kami.
+Dengan memohon rahmat dan ridho-Mu, Ya Allah, Kami bermaksud mengundang Bapak/Ibu/Saudara/i ke acara pernikahan putra-putri kami.
 
-Berikut kami lampirkan link undangan acara pernikahan kedua mempelai:
+Berikut kami lampirkan link undangan acara pernikahan putra-putri kami:
 ${link}
 
-Merupakan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan mendoakan restu untuk kedua mempelai.
+Merupakan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
 Atas kehadiran, perhatian dan doa Bapak/Ibu/Saudara/i, kami ucapkan terima kasih.
 
 Kami yang berbahagia
-Nuhaa & Mus'ab
-Beserta keluarga besar
+Kel. Bapak Achmad Sultony & Ibu Naning Murofidah
+serta
+Kel. Bapak Hirgun & Ibu Ferariaty
 
 وَالسَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ`;
         }
@@ -429,7 +430,7 @@ Beserta keluarga besar
             const { data, error } = await supabaseClient
                 .from(TABLE_NAME)
                 .select('*')
-                .or('is_ortu.eq.false,is_ortu.is.null')
+                .eq('is_ortu', true)
                 .order('id', { ascending: false });
 
             loadingDiv.classList.add('hidden');
@@ -467,7 +468,7 @@ Beserta keluarga besar
 
             data.forEach((item, index) => {
                 const encodedName = encodeURIComponent(item.nama);
-                const invitationLink = `${BASE_URL}?to=${encodedName}`;
+                const invitationLink = `${BASE_URL}?to=${encodedName}&from=ortu`;
                 const dateFormatted = formatDate(item.created_at);
 
                 let statusClass, statusText;
@@ -564,7 +565,7 @@ Beserta keluarga besar
                 try {
                     const { data, error } = await supabaseClient
                         .from(TABLE_NAME)
-                        .insert([{ nama: guestName, is_hadir: false, is_ortu: false }])
+                        .insert([{ nama: guestName, is_hadir: false, is_ortu: true }])
                         .select();
 
                     if (error) throw error;

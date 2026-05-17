@@ -2790,7 +2790,7 @@
                                                     <br />
                                                     Maha Suci Allah yang telah menciptakan makhluk-Nya
                                                     berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi
-                                                    pernikahan kami.
+                                                    <span id="ortu-text-1">pernikahan kami</span>.
                                                 </p>
                                             </div>
                                         </div>
@@ -3742,9 +3742,9 @@
                                                             <div class="elementor-widget-container">
                                                                 <p
                                                                     class="elementor-heading-title elementor-size-default">
-                                                                    Temui kami secara virtual untuk menyaksikan acara
+                                                                    <span id="ortu-text-2">Temui kami secara virtual untuk menyaksikan acara
                                                                     pernikahan kami yang insyaaAllah akan disiarkan
-                                                                    langsung melalui link dibawah ini.</p>
+                                                                    langsung melalui link dibawah ini.</span></p>
                                                             </div>
                                                         </div>
                                                         <div class="elementor-element elementor-element-7abf428 elementor-align-center elementor-widget__width-auto inv-zoom-out elementor-widget elementor-widget-button"
@@ -3796,8 +3796,8 @@
                                                             <div class="elementor-widget-container">
                                                                 <p
                                                                     class="elementor-heading-title elementor-size-default">
-                                                                    Kami dengan hormat menganjurkan tamu kami untuk
-                                                                    mengenakan warna-warna ini untuk hari istimewa kami.
+                                                                    <span id="ortu-text-3">Kami dengan hormat menganjurkan tamu kami untuk
+                                                                    mengenakan warna-warna ini untuk hari istimewa kami.</span>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -4049,7 +4049,7 @@
                                             <div class="elementor-widget-container">
                                                 <p class="elementor-heading-title elementor-size-default">Doa Restu Anda
                                                     merupakan<br />
-                                                    karunia yang sangat berarti bagi kami.<br />
+                                                    <span id="ortu-text-4">karunia yang sangat berarti bagi kami.</span><br />
                                                     Dan jika memberi adalah ungkapan tanda kasih, Anda dapat memberi
                                                     melalui dibawah ini.</p>
                                             </div>
@@ -4577,7 +4577,7 @@ Jakarta Selatan">
                                             data-widget_type="heading.default">
                                             <div class="elementor-widget-container">
                                                 <p class="elementor-heading-title elementor-size-default">Berikan doa
-                                                    dan ucapan terbaik untuk kami.</p>
+                                                    <span id="ortu-text-5">dan ucapan terbaik untuk kami.</span></p>
                                             </div>
                                         </div>
                                         <div class="elementor-element elementor-element-f07b76a inv-zoom-out elementor-invisible elementor-widget elementor-widget-wds_rsvp"
@@ -4786,7 +4786,7 @@ Jakarta Selatan">
                                                                     class="elementor-heading-title elementor-size-default">
                                                                     Merupakan suatu kebahagiaan dan kehormatan bagi
                                                                     kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir
-                                                                    dan memberikan do’a restu kepada kami.<br />
+                                                                    <span id="ortu-text-6">dan memberikan do’a restu kepada kami.</span><br />
                                                                     <br />
                                                                     <b>Wassalamu’alaikum warahmatullahi wabarakatuh</b>
                                                                 </p>
@@ -4812,7 +4812,7 @@ Jakarta Selatan">
                                                             data-widget_type="heading.default"
                                                             style="margin-bottom:60px;">
                                                             <div class="elementor-widget-container">
-                                                                <h2
+                                                                <h2 id="inviter-name"
                                                                     class="elementor-heading-title elementor-size-default">
                                                                     Nuhaa &amp; Mus'ab</h2>
                                                             </div>
@@ -6059,6 +6059,30 @@ setTimeout(startMusic, 300);
 }
 });
 })();
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('from') === 'ortu') {
+            const inviterElement = document.getElementById('inviter-name');
+            if (inviterElement) {
+                inviterElement.innerHTML = "Kel. Bapak Achmad Sultony & Ibu Naning Murofidah<br><span style='font-size: 0.6em'>serta</span><br>Kel. Bapak Hirgun & Ibu Ferariaty";
+                inviterElement.style.lineHeight = "1.5";
+            }
+            const ortu1 = document.getElementById('ortu-text-1');
+            if (ortu1) ortu1.innerHTML = "pernikahan putra-putri kami";
+            const ortu2 = document.getElementById('ortu-text-2');
+            if (ortu2) ortu2.innerHTML = "Saksikan acara pernikahan putra-putri kami secara virtual yang insyaaAllah akan disiarkan langsung melalui link dibawah ini.";
+            const ortu3 = document.getElementById('ortu-text-3');
+            if (ortu3) ortu3.innerHTML = "Kami dengan hormat menganjurkan tamu undangan untuk mengenakan warna-warna ini untuk hari istimewa putra-putri kami.";
+            const ortu4 = document.getElementById('ortu-text-4');
+            if (ortu4) ortu4.innerHTML = "karunia yang sangat berarti bagi putra-putri kami.";
+            const ortu5 = document.getElementById('ortu-text-5');
+            if (ortu5) ortu5.innerHTML = "dan ucapan terbaik untuk putra-putri kami.";
+            const ortu6 = document.getElementById('ortu-text-6');
+            if (ortu6) ortu6.innerHTML = "dan memberikan do’a restu kepada putra-putri kami.";
+        }
+    });
 </script>
 </body>
 <!-- Mirrored from the.invisimple.id/l04/?post_id=29862&comments=24&get=500&order=DESC by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 May 2026 20:21:19 GMT -->
