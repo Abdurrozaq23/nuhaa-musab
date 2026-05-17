@@ -372,7 +372,7 @@
         // Generate message template
         function generateMessage(guestName) {
             const encodedName = encodeURIComponent(guestName);
-            const link = `${BASE_URL}?to=${encodedName}&from=ortu`;
+            const link = `${BASE_URL}?to=${encodedName}&v=2`;
 
             return `Kepada Yth,
 Bapak/Ibu/Saudara/i
@@ -466,7 +466,7 @@ Kel. Bapak Achmad Sultony & Ibu Naning Murofidah
 
             data.forEach((item, index) => {
                 const encodedName = encodeURIComponent(item.nama);
-                const invitationLink = `${BASE_URL}?to=${encodedName}&from=ortu`;
+                const invitationLink = `${BASE_URL}?to=${encodedName}&v=2`;
                 const dateFormatted = formatDate(item.created_at);
 
                 let statusClass, statusText;
